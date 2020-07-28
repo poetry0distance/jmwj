@@ -1,0 +1,75 @@
+#服务器配置
+server:
+  port: 8082
+  servlet:
+    context-path: /exam
+    
+#数据源配置    
+spring:
+  datasource: 
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/exam?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
+    #url: jdbc:mysql://rm-bp160g8f7o21yy322uo.mysql.rds.aliyuncs.com:3306/exam?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: root
+    #password: KqxzL7jgtest
+    type : com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 15
+      auto-commit: false
+      idle-timeout: 30000
+      pool-name: DatebookHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+ 
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+
+#API安全控制，配置接口IP白名单
+api:
+  safe:
+    turn: true
+    ip-white: 127.0.0.1;58.100.228.*;10.88.48.*
+
+#Dubbo接口配置
+#dubbo:
+# application:
+#  name: dubbo-consumer
+# protocol:
+#  name: dubbo
+# port: 20881
+#registry:
+# address: zookeeper://127.0.0.1:2181
+#consumer:
+# timeout: 5000
+
+user:
+  username: wangtao
+  password: 123
+#Mybatis配置    
+mybatis:
+  mapper-locations: classpath*:mybatis/mappers/*Mapper.xml
+  type-aliases-package: com.example.poetry.bean
+
+#翻页插件配置
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+
+#日志配置
+logging:
+  level:
+     com.wasu.mapper : debug
+
+#本地地址修改，因为新装的电脑没有d盘。
+logback: 
+  logdir: e:/logs/exam
+
+
+#题库导入最大数值
+maxNumCount: 10000
