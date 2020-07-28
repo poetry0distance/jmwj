@@ -1,0 +1,1 @@
+批量更新数据的时候 连接数据库url上必须加  &allowMultiQueries=true 不然不支持 ; 符号

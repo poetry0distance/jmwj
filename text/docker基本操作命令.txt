@@ -1,0 +1,47 @@
+查看本地镜像：
+sudo docker images
+
+1、查看本地所有容器：
+sudo  docker ps -a
+
+2、查看本地运行的容器
+sudo  docker ps 
+
+3、搜索tomcat镜像:
+docker search tomcat
+
+4、拉取tomcat镜像
+docker pull tomcat
+
+5、根据镜像启动tomcat容器：
+sudo docker run -d --name tomcat004 -p 8095:8080 tomcat
+sudo docker run -d --name mytomcat -p 8096:8080 mytomcat:V1.0
+
+6、启动容器：
+sudo docker start <CONTAINER ID>
+
+7、停止容器：
+sudo docker stop <CONTAINER ID>
+
+8、删除容器：
+sudo docker rm  <容器名称>
+
+9、删除镜像：
+sudo docker rmi  <IMAGE ID>
+
+10、进入tomcat容器内部,tomcat004为容器名称
+sudo docker exec -ti tomcat004 /bin/bash
+
+11、拷贝本地文件(index.html)到容器(tomcat004)的某个路径：
+sudo docker cp index.html tomcat004:/usr/local/tomcat/webapps/ROOT
+
+12、创建镜像：(根据一个存在的容器，创建一个新镜像，192f9ccba3e7为本地容器的ID)
+sudo docker commit -a "shicf" -m "mytomcat" 192f9ccba3e7 mytomcat:V1.0
+
+13、保存镜像：
+sudo docker save -o mytomcat.tar mytomcat
+
+14、加载容器：
+docker load < mytomcat.tar
+
+

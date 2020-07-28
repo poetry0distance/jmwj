@@ -1,0 +1,1 @@
+cat access_log.2020-06-01.log | cut -d' ' -f3 | sort -rn | uniq -c |sort -rn | more

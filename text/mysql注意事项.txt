@@ -1,0 +1,37 @@
+innodb_large_prefix  默认为off 限制最大索引长度 191 库中表字段为256 建表失败。
+
+如果SQL服务器模式启用了NSI_QUOTES，可以只用单引号引用字符。用双引号引用的字符串被解释为一个识别符
+
+
+1、禁止使用select*；一定要将所要查询的字段写出来
+
+2、在插入的时候，要将属性说明，不能使用insert into table values（） 在增加或者删除字段会出问题。
+
+3、不要使用隐式转换；（123->"123"）,导致全表扫描 
+
+4、不要在where条件的索引字段上使用函数，to_char(tm,'yyyy-mm-dd')='2018-01-01'
+5、尽可能不使用not 、not in 、ont like 、！=、<>等
+
+6、用in来代替 or
+
+7、使用通配符采用右原则    like  ‘%10%’ -> like '10%'
+
+8、多表联查表是自右向左解析，所以将最小的表放最右边
+
+9、where条件的过滤也是自右向左。
+
+10、oracle的sql有共享原理，这种共享是全字符匹配，对于同一条sql，
+第一次执行时会将sql语句放入共享池，第二次的将会获取被解析的语句以及最好的执行路径，所以尽量sql写法一致
+
+11、如果在外层需要查询时，内层尽量不要使用order by ，order by尽量使用索引列
+
+索引测试
+-- SELECT * FROM s_member WHERE CITY_INFO_ID = 1982
+-- CREATE INDEX INDEX_CITY ON s_member(CITY_INFO_ID)
+-- CREATE INDEX INDEX_LOGIN_PWD ON s_member(LOGIN_NAME,USER_PWD)
+-- EXPLAIN SELECT * FROM s_member WHERE LOGIN_NAME = 'anjixian07' AND USER_PWD = 'E10ADC3949BA59ABBE56E057F20F883E'
+-- EXPLAIN SELECT * FROM s_member WHERE USER_TYPE=2
+-- SELECT * FROM s_member WHERE USER_TYPE=1
+-- CREATE INDEX INDEX_USER_TYPE ON s_member(USER_TYPE)
+SELECT * FROM s_member WHERE USER_NAME ='白马湖'
+-- SHOW PROFILES

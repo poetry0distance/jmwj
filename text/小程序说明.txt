@@ -1,0 +1,17 @@
+小程序需要的接口大致整理了一下，可以补充完善下，然后确定下来完整的接口文档，小程序和后端按照文档开发：
+http://note.youdao.com/noteshare?id=29402592499c3fd56e8ee4d0165c2e6c
+
+ssh -T git@gitee.com
+
+Lombok
+Swagger
+
+git add .
+
+git commit -m 'update model'
+
+git拉取远程代码到本地
+https://blog.csdn.net/carfge/article/details/79691360
+
+git 学习网
+https://www.yiibai.com/git/git_push.html

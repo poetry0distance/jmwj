@@ -1,0 +1,27 @@
+dubbo负载均衡策略：
+random loadbalance	权重随机概率（默认）
+roundrobin loadbalance	轮寻
+lastactive loadbalance	最少活跃调用数，相同则随机
+consistenthash loadbalance	一致性hash，相同参数的请求总是发送到同一提供者
+
+dubbo序列化框架 ：hessian序列化（推荐使用）
+dubbo通信框架 netty框架（默认）
+dubbo 集群容错方案（6种）
+Failover Cluster 失败自动切换，自动重试其他服务器（默认）
+Failfast Cluster 快速失败，立即报错，只发起一次调用
+Failsafe Cluster 失败安全，出现异常时，直接忽略
+Failback Cluster 失败自动恢复，记录失败请求，定时重发
+Forking  Cluster 并行调用多个服务器，只要一个成功即返回
+BroadcastCluster 广播逐个调用所有提供者，任意一个报错则报错
+
+服务失效踢出基于zookeeper的临时节点原理。
+Dubbo暂时不支持分布式事务。阿里的mq号称支持
+
+dubbo服务暴露过程：
+Dubbo 会在 Spring 实例化完 bean 之后，在刷新容器最后一步发布 ContextRefreshEvent 事件的时候，通知
+实现了 ApplicationListener 的 ServiceBean 类进行回调 onApplicationEvent 事件方法，Dubbo 会在这个方法
+中调用 ServiceBean 父类 ServiceConfig 的 export 方法，而该方法真正实现了服务的（异步或者非异步）发
+布。
+
+rpc：远程过程调用（一种调用概念）
+http：超文本传输协议
