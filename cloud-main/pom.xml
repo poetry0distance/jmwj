@@ -17,6 +17,7 @@
         <module>consumer-two</module>
         <module>order-two</module>
         <module>cloud-commons</module>
+        <module>cloud-gateway</module>
     </modules>
 
     <!--统一版本管理-->

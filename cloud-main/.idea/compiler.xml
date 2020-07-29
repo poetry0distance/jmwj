@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="cloud-commons" />
         <module name="cloud-eureka" />
+        <module name="cloud-gateway" />
         <module name="consumer-one" />
         <module name="consumer-two" />
         <module name="order-one" />
