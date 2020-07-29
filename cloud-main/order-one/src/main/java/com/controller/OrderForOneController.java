@@ -27,4 +27,10 @@ public class OrderForOneController {
         log.info("test order-one cli--->"+s);
         return s;
     }
+
+    @GetMapping(value = "/getAllMov")
+    public ReturnResultVo getAllMov(){
+        ReturnResultVo s = feignServiceConsumer.listForMov();
+        return s;
+    }
 }

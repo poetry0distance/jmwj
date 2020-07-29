@@ -7,13 +7,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Component
 @FeignClient(value = "CONSUMER")
+@SuppressWarnings("all")
 public interface FeignServiceConsumer {
 
     /**
      * 调用consumer服务
      */
 
-    @SuppressWarnings("all")
     @GetMapping(value = "/getInfoConsumer")
     ReturnResultVo getInfoConsumer();
+
+    @GetMapping("/listForMov")
+    ReturnResultVo listForMov();
+
 }
