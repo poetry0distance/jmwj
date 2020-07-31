@@ -18,6 +18,8 @@
         <module>order-two</module>
         <module>cloud-commons</module>
         <module>cloud-gateway</module>
+        <module>cloud-alibaba-nacos-product-o</module>
+        <module>cloud-alibaba-nacos-consumer-o</module>
     </modules>
 
     <!--统一版本管理-->

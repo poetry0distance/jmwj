@@ -6,6 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="cloud-alibaba-nacos-consumer-o" />
+        <module name="cloud-alibaba-nacos-product-o" />
         <module name="cloud-commons" />
         <module name="cloud-eureka" />
         <module name="cloud-gateway" />
