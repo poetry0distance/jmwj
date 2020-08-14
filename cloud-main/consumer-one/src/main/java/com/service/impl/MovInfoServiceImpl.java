@@ -3,7 +3,6 @@ package com.service.impl;
 import com.entity.MovInfo;
 import com.mapper.MovInfoMapper;
 import com.service.MovInfoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

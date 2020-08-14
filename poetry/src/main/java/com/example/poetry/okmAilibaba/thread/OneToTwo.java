@@ -3,6 +3,8 @@ package com.example.poetry.okmAilibaba.thread;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import static java.util.concurrent.Executors.defaultThreadFactory;
+
 
 /**
  * User: wasu
@@ -16,7 +18,6 @@ public class OneToTwo {
     static class MyThreadData implements Runnable{
         private int threadId;
         private volatile AtomicInteger n ;
-        Object obj = "";
         MyThreadData(int threadId,AtomicInteger n){
             this.threadId = threadId;
             this.n = n;
@@ -56,15 +57,15 @@ public class OneToTwo {
     }
 
     public static void main(String[] args) {
-        ExecutorService e = Executors.newCachedThreadPool();
-//        ThreadPoolExecutor tpe = new ThreadPoolExecutor(3,10,0L, TimeUnit.SECONDS,
-//                new LinkedBlockingQueue<>(),
-//                defaultThreadFactory());
+//        ExecutorService e = Executors.newCachedThreadPool();
+        ThreadPoolExecutor tpe = new ThreadPoolExecutor(3,10,0L, TimeUnit.SECONDS,
+                new LinkedBlockingQueue<>(),
+                defaultThreadFactory());
         AtomicInteger n = new AtomicInteger(1);
         for (int i = 1; i <=2 ; i++) {
             MyThreadData o = new MyThreadData(i,n);
-            e.execute(o);
+            tpe.execute(o);
         }
-        e.shutdown();
+        tpe.shutdown();
     }
 }

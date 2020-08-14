@@ -1,0 +1,27 @@
+{
+  "groups": [
+    {
+      "name": "user",
+      "type": "com.example.poetry.bean.User",
+      "sourceType": "com.example.poetry.bean.User"
+    }
+  ],
+  "properties": [
+    {
+      "name": "user.name",
+      "type": "java.lang.String",
+      "sourceType": "com.example.poetry.bean.User"
+    },
+    {
+      "name": "user.school",
+      "type": "java.lang.String",
+      "sourceType": "com.example.poetry.bean.User"
+    },
+    {
+      "name": "user.six",
+      "type": "java.lang.String",
+      "sourceType": "com.example.poetry.bean.User"
+    }
+  ],
+  "hints": []
+}

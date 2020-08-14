@@ -1,0 +1,10 @@
+server:
+  port: 8020
+
+spring:
+  application:
+    name: nacos-order-pro
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 10.88.47.91:8848

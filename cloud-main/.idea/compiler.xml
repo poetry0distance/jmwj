@@ -6,16 +6,24 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="cloud-alibaba-nacos-consumer-o" />
         <module name="cloud-alibaba-nacos-product-o" />
         <module name="cloud-commons" />
         <module name="cloud-eureka" />
         <module name="cloud-gateway" />
         <module name="consumer-one" />
         <module name="consumer-two" />
+        <module name="nacos-consumer-o" />
+        <module name="nacos-pro-o" />
+        <module name="nacos-pro-t" />
         <module name="order-one" />
         <module name="order-two" />
+        <module name="poetry-t-2020" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="cloud-alibaba-nacos-consumer-o" target="1.8" />
+      <module name="cloud-alibaba-nacos-pro-t" target="1.8" />
+      <module name="cloud-alibaba-nacos-product-o" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
