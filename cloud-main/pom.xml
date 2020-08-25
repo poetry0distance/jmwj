@@ -22,6 +22,7 @@
         <module>nacos-consumer-o</module>
         <module>nacos-pro-t</module>
         <module>poetry-t-2020</module>
+        <module>c-redis-cache</module>
     </modules>
 
     <!--统一版本管理-->

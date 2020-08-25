@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="c-redis-cache" />
         <module name="cloud-alibaba-nacos-product-o" />
         <module name="cloud-commons" />
         <module name="cloud-eureka" />

@@ -2,6 +2,8 @@ package com.entity;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * User: wangtao
  * Date: 2020/7/29
@@ -10,7 +12,7 @@ import lombok.Data;
  * Description:
  */
 @Data
-public class MovInfo {
+public class MovInfo implements Serializable {
 
     private int movieNum;
     private String movieName;
