@@ -24,4 +24,14 @@ public class CacheResultController {
     public List<MovInfo> cache(){
         return cacheService.list();
     }
+
+
+    @GetMapping("/except")
+    public void except(){
+        try {
+            cacheService.sysOut();
+        }catch (Exception e){
+            System.out.println("捕获异常");
+        }
+    }
 }

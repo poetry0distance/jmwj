@@ -13,4 +13,6 @@ import java.util.List;
  */
 public interface CacheService {
     List<MovInfo> list();
+
+    String sysOut() throws Exception;
 }
