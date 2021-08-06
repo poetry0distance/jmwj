@@ -6,12 +6,14 @@ import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.*;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.common.message.MessageExt;
+import org.apache.rocketmq.common.message.MessageQueue;
 import org.apache.rocketmq.remoting.exception.RemotingException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 
 /**
  * <p>Title: EMP </p>
@@ -110,10 +112,16 @@ public class CommunalConfig {
                 sendMsgBody.toString().getBytes());
         String shardingKey = String.valueOf(sendMsgBody.getUid());
         try {
-            SendResult send = defaultMQProducer.send(msg);
+            SendResult send = defaultMQProducer.send(msg,new MessageQueueSelector() {
+                @Override
+                public MessageQueue select(List list, Message message, Object o) {
+                    Integer qID = (Integer) o;
+                    return (MessageQueue) list.get(qID);
+                }
+                },1);
             // 发送消息，只要不抛异常就是成功。
             if (send != null) {
-                System.out.println(new Date() + " Send mq message success. Topic is:" + msg.getTopic() + " msgId is: " );
+                System.out.println(new Date() + " Send mq message success. Topic is:" + msg.getTopic() + " msgId is: "+send.getOffsetMsgId() +"msg uuid:"+sendMsgBody.getUid());
             }
         }
         catch (Exception e) {
