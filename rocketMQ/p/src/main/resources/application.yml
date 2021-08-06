@@ -1,11 +1,12 @@
 server:
-  port: 9898
+  port: 8002
 rocketmq:
   # 生产者配置
   producer:
     isOnOff: on
     # 发送同一类消息的设置为同一个group，保证唯一
     groupName: pg
+    groupId: okl
     # 服务地址
     namesrvAddr: 127.0.0.1:9876
     # 消息最大长度 默认1024*4(4M)
@@ -18,3 +19,8 @@ rocket:
   group: pg
   topic: wt_tw
   tag: rocketTag
+
+aliyun:
+  topic: false #是否连接阿里云的标识
+  AccessKey: xxx
+  SecretKey: xxx

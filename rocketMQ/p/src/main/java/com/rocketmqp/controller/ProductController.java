@@ -1,7 +1,6 @@
 package com.rocketmqp.controller;
 
 import com.rocketmqp.service.RocketMqService;
-import org.apache.rocketmq.client.producer.SendResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,15 +20,15 @@ public class ProductController {
     @Autowired
     private RocketMqService rocketMqService;
 
-    @RequestMapping("/sendMsg")
-    public void sendMsg (){
-        String msg = "OpenAccount Msg"+"-->生产消息";
-//        SendResult sendResult = null;
-        try {
-            rocketMqService.sendMsg(msg) ;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-//        return sendResult ;
+    @RequestMapping("/sendMsg/ordinary")
+    public void sendMsgGeneralMessage (){
+        String type = "GeneralMessage";
+        rocketMqService.sentMsgByType(type,new Object());
+    }
+
+    @RequestMapping("/sendMsg/sequential")
+    public void sendMsgSequentialMessage (){
+        String type = "SequentialMessage";
+        rocketMqService.sentMsgByType(type,new Object());
     }
 }

@@ -1,11 +1,14 @@
 package com.rocketmqp.config;
 
+import com.aliyun.openservices.ons.api.PropertyKeyConst;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.Properties;
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,6 +24,8 @@ public class RocketMQConfig {
 
     @Value("${rocketmq.producer.groupName}")
     private String groupName;
+    @Value("${rocketmq.producer.groupId}")
+    private String groupId;
     @Value("${rocketmq.producer.namesrvAddr}")
     private String namesrvAddr;
     @Value("${rocketmq.producer.maxMessageSize}")
@@ -29,6 +34,28 @@ public class RocketMQConfig {
     private Integer sendMsgTimeout;
     @Value("${rocketmq.producer.retryTimesWhenSendFailed}")
     private Integer retryTimesWhenSendFailed;
+    @Value("${aliyun.AccessKey}")
+    private String accessKey;
+    @Value("${aliyun.SecretKey}")
+    private String secretKey;
+    @Value("${aliyun.topic}")
+    private Boolean topic;
+
+    @Bean
+    public Properties getPropertiesInfo(){
+        Properties properties = new Properties();
+        if (topic){
+            properties.put(PropertyKeyConst.AccessKey,accessKey);
+            // AccessKeySecret 阿里云身份验证，在阿里云用户信息管理控制台获取。
+            properties.put(PropertyKeyConst.SecretKey, secretKey);
+        }
+        //设置发送超时时间，单位：毫秒。
+        properties.setProperty(PropertyKeyConst.SendMsgTimeoutMillis, String.valueOf(sendMsgTimeout));
+        // 设置TCP接入域名，进入消息队列RocketMQ版控制台实例详情页面的接入点区域查看。
+        properties.put(PropertyKeyConst.NAMESRV_ADDR, namesrvAddr);
+        properties.put(PropertyKeyConst.GROUP_ID,groupId);
+        return properties;
+    }
 
     @Bean
     public DefaultMQProducer getRocketMQProducer(){
@@ -49,7 +76,6 @@ public class RocketMQConfig {
         if(null != retryTimesWhenSendFailed){
             producer.setRetryTimesWhenSendFailed(retryTimesWhenSendFailed);
         }
-
         try {
             producer.start();
         } catch (MQClientException e) {
